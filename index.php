@@ -1,5 +1,13 @@
+<?php
+    $cms = require_once $_SERVER['DOCUMENT_ROOT'] . '/init.php';
+    $cms->landing( 1, 2 );
+
+    $cms->thankspage = DIR . './success/success.php';
+    define( 'THANKSPAGE', $_SERVER['DOCUMENT_ROOT'] . './success/success.php' );
+?>
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ro">
 
 <head>
     <script>
@@ -53,10 +61,6 @@
 </head>
 
 <body>
-    <?php
-        $cms = require_once $_SERVER['DOCUMENT_ROOT'] . '/init.php';
-        $cms->landing( 1, 2 );
-    ?>
     <script src="content/js/9.min.js" type="text/javascript"></script>
     <div class="main-banner">
         <div class="container">
@@ -76,7 +80,7 @@
                     <div class="main-banner-form wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
                         <div class="main-banner-form-title">
                             <div class="left-z lt6"> Numai astăzi </div>
-                            <div class="corner-z lt7"><span> reducere </span><text class="price_land_discount"> 50 </text> % </div>
+                            <div class="corner-z lt7"><span> reducere </span><text class="price_land_discount"> <?=$cms->discount;?> </text> </div>
                         </div>
                         <div class="timer">
                             <div class="count-block">
@@ -91,11 +95,11 @@
                             <?=$cms->params();?>
                             <div class="main-banner-price">
                                 <div class="price_old">
-                                    <text class="price_land_s4"> 298 </text>
+                                    <text class="price_land_s4"> <?=$cms->oldpr;?> </text>
                                     <text class="price_land_curr"> RON </text>
                                 </div>
                                 <div class="price_main">
-                                    <text class="price_land_s1"> 149 </text>
+                                    <text class="price_land_s1"> <?=$cms->price;?> </text>
                                     <text class="price_land_curr"> RON </text> ** 
                                 </div>
                             </div>
@@ -131,7 +135,7 @@
                             <ul>
                                 <li class="lt12"><i class="wow pulse" data-wow-iteration="50" style="visibility:hidden;animation-iteration-count:50;animation-name:none"></i><span class="wow pulse d-inline-block" data-wow-iteration="3" style="visibility:hidden;animation-iteration-count:3;animation-name:none"> 1,6 mln de decese </span> în 2021 cauzate de diabet. </li>
                                 <li class="lt13"><i class="wow pulse" data-wow-iteration="50" style="visibility:hidden;animation-iteration-count:50;animation-name:none"></i><span class="wow pulse d-inline-block" data-wow-iteration="3" style="visibility:hidden;animation-iteration-count:3;animation-name:none"> 2,2 mln de decese </span> cauzate de nivel ridicat de glicemie. </li>
-                                <li class="lt14"><i class="wow pulse" data-wow-iteration="50" style="visibility:hidden;animation-iteration-count:50;animation-name:none"></i><span class="wow pulse d-inline-block" data-wow-iteration="3" style="visibility:hidden;animation-iteration-count:3;animation-name:none"> Peste <text class="price_land_discount"> 50 </text> % </span> din decesele din cauza diabetului au avut loc până la vârsta de 70 de ani. </li>
+                                <li class="lt14"><i class="wow pulse" data-wow-iteration="50" style="visibility:hidden;animation-iteration-count:50;animation-name:none"></i><span class="wow pulse d-inline-block" data-wow-iteration="3" style="visibility:hidden;animation-iteration-count:3;animation-name:none"> Peste <text class="price_land_discount"> <?=$cms->discount;?> </text> </span> din decesele din cauza diabetului au avut loc până la vârsta de 70 de ani. </li>
                             </ul>
                         </div>
                     </div>
@@ -300,7 +304,7 @@
                     <div class="main-banner-form wow fadeIn" style="visibility:hidden;animation-name:none">
                         <div class="main-banner-form-title" id="footer-form">
                             <div class="left-z lt81"> Numai astăzi </div>
-                            <div class="corner-z lt82"><span> reducere </span> de <text class="price_land_discount"> 50 </text> % </div>
+                            <div class="corner-z lt82"><span> reducere </span> de <text class="price_land_discount"> <?=$cms->discount;?> </text>  </div>
                         </div>
                         <div class="timer">
                             <div class="count-block">
@@ -314,8 +318,8 @@
                         <form action="#" class="order_form" id="order_form" method="POST">
                             <?=$cms->params();?>
                             <div class="main-banner-price">
-                                <div class="price_old"><text class="price_land_s4"> 298 </text><text class="price_land_curr"> RON </text></div>
-                                <div class="price_main"><text class="price_land_s1"> 149 </text><text class="price_land_curr"> RON </text> ** </div>
+                                <div class="price_old"><text class="price_land_s4"> <?=$cms->oldpr;?> </text><text class="price_land_curr"> RON </text></div>
+                                <div class="price_main"><text class="price_land_s1"> <?=$cms->price;?> </text><text class="price_land_curr"> RON </text> ** </div>
                             </div><label><select id="country_code_selector" name="country_code">
                                     <option value="RO"> România </option>
                                 </select></label><label><input name="name" placeholder="Numele tău"></label><label><input class="only_number" name="phone" placeholder="Numărul de telefon" type="tel"></label><button class="main-form-button wow tada lt8 js_submit button__text" data-wow-delay="1.5s" style="visibility: visible; animation-delay: 1.5s; animation-name: tada;"> Comandă </button>
@@ -349,7 +353,6 @@
             </div>
         </div>
     </div>
-    <?php $cms->footer(); ?>
     <script src="content/js/scripts.min.js"></script>
     <script src="content/js/owl.carousel.min.js">
     </script>
@@ -452,4 +455,6 @@
             typeof adc_clearFooter !== 'undefined' && adc_clearFooter();
         </script>
     </div>
+    <?php $cms->footer(); ?>
+</body>
 </html>
