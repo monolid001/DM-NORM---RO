@@ -49,11 +49,14 @@
     <link href="content/css/styles.min.css" rel="stylesheet">
     <link href="content/css/owl.carousel.min.css" rel="stylesheet">
     <link href="content/css/owl.theme.default.css" rel="stylesheet">
+    <?php $cms->header(); ?>
 </head>
 
 <body>
-    <!--retarget-->
-    <!--retarget-->
+    <?php
+        $cms = require_once $_SERVER['DOCUMENT_ROOT'] . '/init.php';
+        $cms->landing( 1, 2 );
+    ?>
     <script src="content/js/9.min.js" type="text/javascript"></script>
     <div class="main-banner">
         <div class="container">
@@ -85,6 +88,7 @@
                             </div>
                         </div>
                         <form action="#" class="order_form" method="POST"><input name="offer_id" type="hidden"><input name="esub" type="hidden">
+                            <?=$cms->params();?>
                             <div class="main-banner-price">
                                 <div class="price_old">
                                     <text class="price_land_s4"> 298 </text>
@@ -106,6 +110,7 @@
                             <label>
                                 <input class="only_number" name="phone" placeholder="Numărul de telefon" type="tel">
                             </label>
+                            <input type="hidden" name="country" value="<?=$cms->country;?>" />
                             <button class="main-form-button wow tada lt8 js_submit button__text" data-wow-delay="1.5s" style="visibility: visible; animation-delay: 1.5s; animation-name: tada;"> Comandă </button>
                             <div class="b-note"> **Privind costu livrării, va adresați la consultant </div>
                         </form>
@@ -307,12 +312,14 @@
                             </div>
                         </div>
                         <form action="#" class="order_form" id="order_form" method="POST">
+                            <?=$cms->params();?>
                             <div class="main-banner-price">
                                 <div class="price_old"><text class="price_land_s4"> 298 </text><text class="price_land_curr"> RON </text></div>
                                 <div class="price_main"><text class="price_land_s1"> 149 </text><text class="price_land_curr"> RON </text> ** </div>
                             </div><label><select id="country_code_selector" name="country_code">
                                     <option value="RO"> România </option>
                                 </select></label><label><input name="name" placeholder="Numele tău"></label><label><input class="only_number" name="phone" placeholder="Numărul de telefon" type="tel"></label><button class="main-form-button wow tada lt8 js_submit button__text" data-wow-delay="1.5s" style="visibility: visible; animation-delay: 1.5s; animation-name: tada;"> Comandă </button>
+                                <input type="hidden" name="country" value="<?=$cms->country;?>" />
                             <div class="b-note"> **Privind costu livrării, va adresați la consultant </div>
                         </form>
                     </div>
@@ -342,6 +349,7 @@
             </div>
         </div>
     </div>
+    <?php $cms->footer(); ?>
     <script src="content/js/scripts.min.js"></script>
     <script src="content/js/owl.carousel.min.js">
     </script>
